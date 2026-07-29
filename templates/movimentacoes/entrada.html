@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Entrada de Estoque{% endblock %}
+
+{% block page_title %}
+Entrada de Estoque
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Produto
+
+                </label>
+
+                <select
+                    class="form-select"
+                    name="produto_id"
+                    required>
+
+                    <option value="">
+
+                        Selecione...
+
+                    </option>
+
+                    {% for produto in produtos %}
+
+                    <option value="{{ produto.id }}">
+
+                        {{ produto.nome }}
+
+                        (Estoque atual:
+                        {{ produto.quantidade }})
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    Quantidade
+
+                </label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    min="1"
+                    name="quantidade"
+                    required>
+
+            </div>
+
+            <button class="btn btn-success">
+
+                <i class="bi bi-plus-circle"></i>
+
+                Registrar Entrada
+
+            </button>
+
+            <a
+                href="{{ url_for('movimentacoes.listar') }}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

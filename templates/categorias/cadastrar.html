@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Nova Categoria | BoschFlow{% endblock %}
+
+{% block page_title %}
+Nova Categoria
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Nome da Categoria
+                </label>
+
+                <input
+                    type="text"
+                    name="nome"
+                    class="form-control"
+                    placeholder="Ex: Componentes Eletrônicos"
+                    required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Descrição
+                </label>
+
+                <textarea
+                    name="descricao"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Descrição da categoria"></textarea>
+
+            </div>
+
+            <button class="btn btn-success">
+
+                <i class="bi bi-check-circle"></i>
+
+                Salvar
+
+            </button>
+
+            <a href="{{ url_for('categorias.listar') }}"
+               class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

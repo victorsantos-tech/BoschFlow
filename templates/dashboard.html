@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">Dashboard</h2>
+            <small class="text-muted">
+                Bem-vindo ao BoschFlow
+            </small>
+        </div>
+
+    </div>
+
+    <!-- Cards -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Produtos</h6>
+
+                    <h2>{{ total_produtos }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Fornecedores</h6>
+
+                    <h2>{{ total_fornecedores }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Estoque Crítico</h6>
+
+                    <h2 class="text-danger">
+
+                        {{ estoque_critico }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Valor em Estoque</h6>
+
+                    <h2 class="text-success">
+
+                        R$ {{ "%.2f"|format(valor_total) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Gráficos -->
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header">
+
+                    Entradas x Saídas
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="graficoMovimentacoes"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header">
+
+                    Produtos por Categoria
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="graficoCategorias"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+async function carregarDashboard() {
+
+    const resposta = await fetch("/api/dashboard");
+
+    const dados = await resposta.json();
+
+    new Chart(document.getElementById("graficoMovimentacoes"), {
+
+        type: "bar",
+
+        data: {
+
+            labels: ["Entradas", "Saídas"],
+
+            datasets: [{
+
+                label: "Movimentações",
+
+                data: [
+
+                    dados.entradas,
+
+                    dados.saidas
+
+                ]
+
+            }]
+
+        }
+
+    });
+
+    new Chart(document.getElementById("graficoCategorias"), {
+
+        type: "pie",
+
+        data: {
+
+            labels: dados.categorias_labels,
+
+            datasets: [{
+
+                data: dados.categorias_valores
+
+            }]
+
+        }
+
+    });
+
+}
+
+carregarDashboard();
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Categoria | BoschFlow{% endblock %}
+
+{% block page_title %}
+Editar Categoria
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Nome da Categoria
+                </label>
+
+                <input
+                    type="text"
+                    name="nome"
+                    class="form-control"
+                    value="{{ categoria.nome }}"
+                    required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Descrição
+                </label>
+
+                <textarea
+                    name="descricao"
+                    class="form-control"
+                    rows="4">{{ categoria.descricao }}</textarea>
+
+            </div>
+
+            <button class="btn btn-primary">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Atualizar
+
+            </button>
+
+            <a href="{{ url_for('categorias.listar') }}"
+               class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

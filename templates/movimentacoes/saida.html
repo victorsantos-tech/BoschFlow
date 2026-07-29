@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Saída de Estoque{% endblock %}
+
+{% block page_title %}
+Saída de Estoque
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Produto
+
+</label>
+
+<select
+class="form-select"
+name="produto_id"
+required>
+
+<option value="">
+
+Selecione...
+
+</option>
+
+{% for produto in produtos %}
+
+<option value="{{ produto.id }}">
+
+{{ produto.nome }}
+
+(Disponível:
+{{ produto.quantidade }})
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Quantidade
+
+</label>
+
+<input
+type="number"
+min="1"
+class="form-control"
+name="quantidade"
+required>
+
+</div>
+
+<button class="btn btn-danger">
+
+<i class="bi bi-box-arrow-right"></i>
+
+Registrar Saída
+
+</button>
+
+<a
+href="{{ url_for('movimentacoes.listar') }}"
+class="btn btn-secondary">
+
+Cancelar
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

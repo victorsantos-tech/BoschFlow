@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente virtual
+venv/
+.venv/
+
+# Banco local
+*.db
+*.sqlite
+*.sqlite3
+
+# Configurações locais
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Cache Flask
+instance/
+
+# Uploads grandes
+# (deixe comentado se quiser subir as imagens)
+# static/uploads/

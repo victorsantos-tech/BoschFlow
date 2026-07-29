@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Produto | BoschFlow{% endblock %}
+
+{% block page_title %}
+Editar Produto
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">Código</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="codigo"
+                        value="{{ produto.codigo }}"
+                        required>
+
+                </div>
+
+                <div class="col-md-8 mb-3">
+
+                    <label class="form-label">Nome</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="nome"
+                        value="{{ produto.nome }}"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">Descrição</label>
+
+                <textarea
+                    class="form-control"
+                    rows="3"
+                    name="descricao">{{ produto.descricao }}</textarea>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">Preço</label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        step="0.01"
+                        name="preco"
+                        value="{{ produto.preco }}"
+                        required>
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">Quantidade</label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="quantidade"
+                        value="{{ produto.quantidade }}"
+                        required>
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">Estoque Mínimo</label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="estoque_minimo"
+                        value="{{ produto.estoque_minimo }}"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">Categoria</label>
+
+                    <select class="form-select" name="categoria_id">
+
+                        {% for categoria in categorias %}
+
+                        <option
+                            value="{{ categoria.id }}"
+                            {% if categoria.id == produto.categoria_id %}selected{% endif %}>
+
+                            {{ categoria.nome }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">Fornecedor</label>
+
+                    <select class="form-select" name="fornecedor_id">
+
+                        {% for fornecedor in fornecedores %}
+
+                        <option
+                            value="{{ fornecedor.id }}"
+                            {% if fornecedor.id == produto.fornecedor_id %}selected{% endif %}>
+
+                            {{ fornecedor.nome }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Atualizar Produto
+
+            </button>
+
+            <a
+                href="{{ url_for('produtos.listar') }}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

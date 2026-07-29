@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block title %}Novo Produto | BoschFlow{% endblock %}
+
+{% block page_title %}
+Novo Produto
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <form 
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Código
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="codigo"
+                        required>
+
+                </div>
+
+
+                <div class="col-md-8 mb-3">
+
+                    <label class="form-label">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="nome"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Descrição
+                </label>
+
+                <textarea
+                    class="form-control"
+                    rows="3"
+                    name="descricao"></textarea>
+
+            </div>
+
+
+            <!-- IMAGEM -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Imagem do Produto
+                </label>
+
+                <input
+                    type="file"
+                    class="form-control"
+                    name="imagem"
+                    accept="image/*"
+                    onchange="previewImagem(event)">
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <img
+                    id="preview"
+                    src=""
+                    style="display:none;"
+                    width="180"
+                    class="rounded border">
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">
+                        Preço
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        step="0.01"
+                        min="0"
+                        name="preco"
+                        required>
+
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        min="0"
+                        name="quantidade"
+                        required>
+
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+
+                    <label class="form-label">
+                        Estoque Mínimo
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        min="0"
+                        name="estoque_minimo"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row">
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Categoria
+                    </label>
+
+
+                    <select
+                        class="form-select"
+                        name="categoria_id"
+                        required>
+
+
+                        <option value="">
+                            Selecione...
+                        </option>
+
+
+                        {% for categoria in categorias %}
+
+                        <option value="{{ categoria.id }}">
+
+                            {{ categoria.nome }}
+
+                        </option>
+
+                        {% endfor %}
+
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Fornecedor
+                    </label>
+
+
+                    <select
+                        class="form-select"
+                        name="fornecedor_id"
+                        required>
+
+
+                        <option value="">
+                            Selecione...
+                        </option>
+
+
+                        {% for fornecedor in fornecedores %}
+
+                        <option value="{{ fornecedor.id }}">
+
+                            {{ fornecedor.nome }}
+
+                        </option>
+
+                        {% endfor %}
+
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button class="btn btn-success">
+
+                <i class="bi bi-check-circle"></i>
+
+                Salvar Produto
+
+            </button>
+
+
+
+            <a
+                href="{{ url_for('produtos.listar') }}"
+                class="btn btn-secondary">
+
+                Cancelar
+
+            </a>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+function previewImagem(event){
+
+    const imagem = event.target.files[0];
+
+    const preview = document.getElementById("preview");
+
+
+    if(imagem){
+
+        preview.src = URL.createObjectURL(imagem);
+
+        preview.style.display = "block";
+
+    }
+
+}
+
+</script>
+
+
+{% endblock %}

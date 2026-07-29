@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Movimentações{% endblock %}
+
+{% block page_title %}
+Movimentações de Estoque
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>Histórico</h2>
+
+    <a
+        href="{{ url_for('movimentacoes.entrada') }}"
+        class="btn btn-success">
+
+        <i class="bi bi-plus-circle"></i>
+
+        Nova Entrada
+
+    </a>
+
+</div>
+
+<div class="card">
+
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Data</th>
+                        <th>Produto</th>
+                        <th>Tipo</th>
+                        <th>Quantidade</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for mov in movimentacoes %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ mov.data.strftime("%d/%m/%Y %H:%M") }}
+
+                        </td>
+
+                        <td>
+
+                            {{ mov.produto.nome }}
+
+                        </td>
+
+                        <td>
+
+                            {% if mov.tipo == "ENTRADA" %}
+
+                                <span class="badge bg-success">
+
+                                    Entrada
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    Saída
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {{ mov.quantidade }}
+
+                        </td>
+
+                    </tr>
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="4" class="text-center">
+
+                            Nenhuma movimentação encontrada.
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
