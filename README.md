@@ -1,47 +1,48 @@
 # BoschFlow
 
-Sistema web de gerenciamento de estoque desenvolvido em Python utilizando Flask.
+Sistema web de gerenciamento de estoque industrial desenvolvido em **Python utilizando Flask**.
 
-O BoschFlow simula um sistema de controle de estoque industrial, permitindo o gerenciamento de produtos, fornecedores, categorias e movimentações de entrada e saída.
+O BoschFlow foi criado para simular uma aplicação utilizada em ambientes corporativos, permitindo o controle de produtos, fornecedores, categorias e movimentações de estoque.
 
-O projeto foi desenvolvido com foco em desenvolvimento backend, integração com banco de dados e criação de uma aplicação web completa utilizando arquitetura organizada por módulos.
+O projeto envolve desenvolvimento backend, integração com banco de dados, autenticação de usuários e construção de uma interface administrativa completa.
 
+---
 
 ## Funcionalidades
 
-### Autenticação
+### 🔐 Autenticação
 
 - Login de usuários
 - Controle de sessão
 - Usuário administrador
 
 
-### Produtos
+### 📦 Gestão de Produtos
 
-- Cadastro de produtos
-- Edição e exclusão
+- Cadastro, edição e exclusão de produtos
 - Pesquisa de produtos
 - Controle de quantidade em estoque
 - Definição de estoque mínimo
+- Associação com categorias e fornecedores
 - Upload de imagens dos produtos
 
 
-### Estoque
+### 🔄 Controle de Estoque
 
-- Registro de entradas
-- Registro de saídas
+- Registro de entrada de produtos
+- Registro de saída de produtos
 - Histórico de movimentações
 
 
-### Cadastros
+### 🏷 Cadastros
 
 - Gerenciamento de categorias
 - Gerenciamento de fornecedores
 
 
-### Dashboard
+### 📊 Dashboard
 
-Painel com informações do estoque:
+Painel com informações gerais do estoque:
 
 - Quantidade de produtos cadastrados
 - Quantidade de fornecedores
@@ -50,9 +51,9 @@ Painel com informações do estoque:
 - Indicadores de movimentação
 
 
-### Relatórios
+### 📄 Relatórios
 
-- Exportação de produtos em Excel
+- Exportação de produtos para Excel
 - Geração de relatórios em PDF
 
 
@@ -60,19 +61,19 @@ Painel com informações do estoque:
 
 # Tecnologias utilizadas
 
-## Backend
+### Backend
 
 - Python
 - Flask
 - SQLAlchemy
 
 
-## Banco de dados
+### Banco de Dados
 
 - SQLite
 
 
-## Frontend
+### Frontend
 
 - HTML5
 - CSS3
@@ -80,7 +81,7 @@ Painel com informações do estoque:
 - Bootstrap
 
 
-## Bibliotecas
+### Bibliotecas
 
 - OpenPyXL
 - ReportLab
@@ -91,7 +92,7 @@ Painel com informações do estoque:
 
 # Estrutura do projeto
 
-```
+```text
 BoschFlow/
 
 ├── app.py
@@ -116,22 +117,22 @@ BoschFlow/
 │   └── pdf_service.py
 
 ├── templates/
-│
+
 ├── static/
 │   ├── css/
 │   ├── js/
 │   └── uploads/
 
-├── screenshot/
+├── Screenshots/
 
 └── requirements.txt
 ```
 
 ---
 
-# Acesso de demonstração
+# Acesso para demonstração
 
-Para testar o sistema:
+Usuário disponível para testes:
 
 ```
 Email:
@@ -143,7 +144,7 @@ boschflow123
 
 ---
 
-# Como executar o projeto
+# Como executar
 
 Clone o repositório:
 
@@ -151,7 +152,7 @@ Clone o repositório:
 git clone https://github.com/victorsantos-tech/BoschFlow.git
 ```
 
-Entre na pasta:
+Acesse a pasta:
 
 ```bash
 cd BoschFlow
@@ -163,13 +164,13 @@ Instale as dependências:
 pip install -r requirements.txt
 ```
 
-Execute:
+Execute a aplicação:
 
 ```bash
 python app.py
 ```
 
-Acesse:
+Acesse no navegador:
 
 ```
 http://127.0.0.1:5000
@@ -181,39 +182,42 @@ http://127.0.0.1:5000
 
 ## Login
 
-![Login](screenshot/login.png)
+![Login](Screenshots/login.png)
 
 
 ## Dashboard
 
-![Dashboard](screenshot/dashboard.png)
+![Dashboard](Screenshots/dashboard.png)
 
 
 ## Produtos
 
-![Produtos](screenshot/produtos.png)
+![Produtos](Screenshots/Produtos.png)
 
 
-## Cadastro de Produto
+## Entrada de Estoque
 
-![Cadastro](screenshot/cadastro.png)
+![Entrada de Estoque](Screenshots/estoque%20de%20entrada.png)
 
 
-## Controle de Estoque
+## Saída de Estoque
 
-![Estoque](screenshot/estoque.png)
+![Saída de Estoque](Screenshots/estoque%20de%20saída.png)
 
 
 ---
 
 # Objetivo do projeto
 
-Projeto desenvolvido para praticar desenvolvimento de aplicações web completas, envolvendo backend, banco de dados, autenticação, gerenciamento de estoque e criação de interfaces administrativas.
+Projeto desenvolvido para aplicar conhecimentos em desenvolvimento web, banco de dados e criação de sistemas administrativos, utilizando uma arquitetura organizada e tecnologias utilizadas no mercado.
 
 ---
 
 # Autor
 
-**Victor Santos**
+**Victor Hugo dos Santos**
 
 Engenharia de Software
+
+GitHub:
+https://github.com/victorsantos-tech
